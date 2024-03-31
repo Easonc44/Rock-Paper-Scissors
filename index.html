@@ -3,91 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock, Paper, Scissors</title>
+    <script src="java.js" defer></script>
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <script>
-
-        function getComputerChoice() {
-            const choices = ["Rock", "Paper", "Scissors"];
-
-            const random = Math.floor(Math.random() * choices.length);
-            return random, choices[random];
-        }
-        
-        function getPlayerChoice() {
-            let playerchoice = prompt("Enter your selection: ");
-            
-            return playerchoice.charAt(0).toUpperCase() + playerchoice.slice(1).toLowerCase();
-        }
-        
-        function playRound(playerSelection, computerSelection) {
-            if(playerSelection === 'Rock' && computerSelection === 'Paper') {
-                let result = "You Lose! Paper beats Rock";
-                return result;
-            }
-            else if(playerSelection === 'Rock' && computerSelection === 'Scissors') {
-                let result = "You Win! Rock beats Scissors";
-                return result;
-            }
-            else if(playerSelection === 'Paper' && computerSelection === 'Rock') {
-                let result = "You Win! Paper beats Rock";
-                return result;
-            }
-            else if(playerSelection === 'Paper' && computerSelection === 'Scissors') {
-                let result = "You Lose! Scissors beats Paper";
-                return result;
-            }
-            else if(playerSelection === 'Scissors' && computerSelection === 'Rock') {
-                let result = "You Lose! Rock beats Scissors";
-                return result;
-            }
-             else if(playerSelection === 'Scissors' && computerSelection === 'Paper') {
-                let result = "You Win! Scissors beats Paper";
-                return result;
-            }
-            else if(playerSelection === computerSelection) {
-                let result = "Tie!";
-                return result;
-            }
-        }
-
-        function playGame() {
-            let wins = 0;
-            let loses = 0;
-            let youwin = "You Win!"
-            let youlose = "You Lose!"
-            for ( i = 0; i < 5; i++) {
-                let computerSelection = getComputerChoice();
-                let playerSelection = getPlayerChoice();
-                let result = playRound(playerSelection, computerSelection);
-                let round = i+1;
-                console.log("Round " + round + ":" + result);
-                if(result.includes(youwin)) {
-                    wins++;
-                }
-                else if(result.includes(youlose)) {
-                    loses++;
-                }
-                else if(result === "Tie!") {
-                    
-                }
-            }
-            if(wins > loses) {
-                let finalresult = "You Win!";
-                return finalresult;
-            }
-            else if(wins < loses) {
-                let finalresult = "You Lose!";
-                return finalresult;
-            }
-            else {
-                let finalresult = "Tie!";
-                return finalresult;
-            }
-        }
-        console.log(playGame());
-    </script>
+   <div class="header">
+        <h1 class="title">ROCK PAPER SCISSORS</h1>
+   </div>
+   <main class="main">
+        <div class=rules>
+            <p>FIRST ONE TO 5 POINTS WINS</p>
+        </div>
+        <div class="roundresult">
+            <h2 class="score-Message" id="scoreInfo">Who's going to win?!</h2>
+            <h3 class="score-Message" id="scoreMessage">You VS Computer</h3>
+        </div>
+        <div class="scoreboard">
+            <div class="scorebox">
+                <div class="sign" id="playerSign">🧑</div>
+                <p class="score" id="playerScore">Player: 0</p>
+            </div>
+            <div class="scorebox">
+                <div class="sign" id="computerSign">💻</div>
+                <p class="score" id="computerScore">Computer: 0</p>
+            </div>
+        </div>
+        <div class="playing">
+            <button class="btn" id="rockBtn">✊</button>
+            <button class="btn" id="scissorBtn">✌️</button>
+            <button class="btn" id="paperBtn">✋</button>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>hi</p>
+    </footer>
+    <div class="modal" id="endgameModal">
+        <p class="modal-title" id="endgameMsg"></p>
+        <button class="btn-restart" id="restartBtn">Play Again</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
 </body>
 </html>
 
